@@ -1,11 +1,410 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BP Premium</title>
+  <title>BP Premium Cars — Skup Aut Wrocław, Autokomis</title>
+  <meta name="description" content="BP Premium Cars — komis samochodowy Wrocław. Skup aut za gotówkę, sprzedaż i komis samochodów używanych. Ul. Ceglana 73, Wrocław.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <h1>Hello World</h1>
+
+  <!-- NAVBAR -->
+  <header id="navbar" class="navbar">
+    <div class="navbar__inner container">
+      <a href="#hero" class="navbar__logo" aria-label="BP Premium Cars — strona główna">
+        <span class="logo-bp">BP</span>
+        <span class="logo-divider"></span>
+        <span class="logo-premium">PREMIUM CARS</span>
+      </a>
+      <nav class="navbar__nav" id="navMenu" aria-label="Nawigacja główna">
+        <a href="#o-nas" class="nav-link">O nas</a>
+        <a href="#uslugi" class="nav-link">Usługi</a>
+        <a href="#ogloszenia" class="nav-link">Ogłoszenia</a>
+        <a href="#kontakt" class="nav-link">Kontakt</a>
+        <a href="tel:794111213" class="nav-cta">
+          <i class="fa-solid fa-phone" aria-hidden="true"></i>
+          <span>794 11 12 13</span>
+        </a>
+      </nav>
+      <button class="navbar__hamburger" id="hamburger" aria-label="Otwórz menu" aria-expanded="false" aria-controls="navMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="hero" class="hero">
+    <div class="hero__video-wrap">
+      <video class="hero__video" autoplay muted loop playsinline poster="assets/hero-poster.jpg">
+        <source src="assets/main.mp4" type="video/mp4">
+      </video>
+      <div class="hero__overlay"></div>
+    </div>
+    <div class="hero__content container">
+      <p class="hero__eyebrow">Wrocław · ul. Ceglana 73</p>
+      <h1 class="hero__headline">Twój Nowy<br><em>Używany Samochód</em></h1>
+      <p class="hero__sub">Skup, sprzedaż i komis aut premium<br>w sercu Wrocławia.</p>
+      <div class="hero__actions">
+        <a href="#ogloszenia" class="btn btn--primary">
+          <i class="fa-solid fa-car" aria-hidden="true"></i>
+          Zobacz ogłoszenia
+        </a>
+        <a href="#kontakt" class="btn btn--ghost">Skontaktuj się</a>
+      </div>
+    </div>
+    <a href="#o-nas" class="hero__scroll-cue" aria-label="Przewiń w dół">
+      <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+    </a>
+  </section>
+
+  <!-- O NAS -->
+  <section id="o-nas" class="section o-nas">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Kim jesteśmy</span>
+        <h2 class="section-title">O NAS</h2>
+      </div>
+      <div class="o-nas__grid">
+        <div class="o-nas__text">
+          <p>BP Premium Cars to rodzinny komis samochodowy z wieloletnim doświadczeniem na rynku wrocławskim. Specjalizujemy się w skupie aut za gotówkę, sprzedaży komisowej oraz kompleksowej obsłudze klientów indywidualnych i firmowych.</p>
+          <p>Każdy pojazd w naszej ofercie jest starannie sprawdzony i uczciwie opisany. Oferujemy atrakcyjne ceny — zarówno przy skupie, jak i przy sprzedaży. Działamy szybko: skup auta realizujemy nawet w ciągu 1–2 godzin.</p>
+          <a href="#kontakt" class="btn btn--primary o-nas__btn">
+            Porozmawiajmy <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+        <div class="o-nas__stats">
+          <div class="stat-card">
+            <div class="stat-card__number-wrap">
+              <span class="stat-card__number" data-target="15">0</span>
+              <span class="stat-card__suffix">+</span>
+            </div>
+            <span class="stat-card__label">lat doświadczenia</span>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__number-wrap">
+              <span class="stat-card__number" data-target="500">0</span>
+              <span class="stat-card__suffix">+</span>
+            </div>
+            <span class="stat-card__label">sprzedanych aut</span>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__number-wrap">
+              <span class="stat-card__number" data-target="100">0</span>
+              <span class="stat-card__suffix">%</span>
+            </div>
+            <span class="stat-card__label">zadowolonych klientów</span>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__number-wrap">
+              <span class="stat-card__number" data-target="30">0</span>
+              <span class="stat-card__suffix">+</span>
+            </div>
+            <span class="stat-card__label">aut w ofercie</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NASZE USŁUGI -->
+  <section id="uslugi" class="section uslugi">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Co oferujemy</span>
+        <h2 class="section-title">NASZE USŁUGI</h2>
+      </div>
+      <div class="uslugi__grid">
+        <div class="service-card">
+          <div class="service-card__icon">
+            <i class="fa-solid fa-hand-holding-dollar" aria-hidden="true"></i>
+          </div>
+          <h3 class="service-card__title">Skup Aut</h3>
+          <p class="service-card__desc">Kupujemy każde auto — sprawne, uszkodzone, powypadkowe. Gotówka od ręki w ciągu 1–2 godzin, bez zbędnych formalności. Oferujemy do 90% wartości rynkowej.</p>
+          <a href="#kontakt" class="service-card__link">
+            Bezpłatna wycena <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+        <div class="service-card service-card--featured">
+          <div class="service-card__badge">Polecane</div>
+          <div class="service-card__icon">
+            <i class="fa-solid fa-car" aria-hidden="true"></i>
+          </div>
+          <h3 class="service-card__title">Sprzedaż</h3>
+          <p class="service-card__desc">Szeroki wybór sprawdzonych samochodów używanych w atrakcyjnych cenach. Uczciwe opisy, możliwość jazdy próbnej i finansowania. Ponad 30 aut w ofercie.</p>
+          <a href="#ogloszenia" class="service-card__link">
+            Zobacz ofertę <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <i class="fa-solid fa-handshake" aria-hidden="true"></i>
+          </div>
+          <h3 class="service-card__title">Komis</h3>
+          <p class="service-card__desc">Sprzedaj swoje auto bez stresu i za lepszą cenę — nawet do 95% wartości rynkowej. Zajmiemy się całą obsługą: od wyceny po przekazanie kluczy.</p>
+          <a href="#kontakt" class="service-card__link">
+            Dowiedz się więcej <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NASZE AKTYWNE OGŁOSZENIA -->
+  <section id="ogloszenia" class="section ogloszenia">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Aktualna oferta</span>
+        <h2 class="section-title">NASZE AKTYWNE OGŁOSZENIA</h2>
+      </div>
+
+      <div class="filter-bar" id="filterBar" role="search" aria-label="Filtruj ogłoszenia">
+        <div class="filter-bar__row">
+          <select class="filter-select" id="f-make" aria-label="Filtruj po marce">
+            <option value="">Marka</option>
+          </select>
+          <select class="filter-select" id="f-model" aria-label="Filtruj po modelu" disabled>
+            <option value="">Model</option>
+          </select>
+          <select class="filter-select" id="f-fuel" aria-label="Filtruj po paliwie">
+            <option value="">Paliwo</option>
+            <option value="petrol">Benzyna</option>
+            <option value="diesel">Diesel</option>
+          </select>
+          <select class="filter-select" id="f-year-min" aria-label="Rok od">
+            <option value="">Rok od</option>
+          </select>
+          <select class="filter-select" id="f-year-max" aria-label="Rok do">
+            <option value="">Rok do</option>
+          </select>
+        </div>
+        <div class="filter-bar__row">
+          <div class="filter-input-wrap">
+            <span class="filter-input-label">Cena min</span>
+            <input class="filter-input" type="number" id="f-price-min" placeholder="PLN" min="0" aria-label="Cena minimalna">
+          </div>
+          <div class="filter-input-wrap">
+            <span class="filter-input-label">Cena max</span>
+            <input class="filter-input" type="number" id="f-price-max" placeholder="PLN" min="0" aria-label="Cena maksymalna">
+          </div>
+          <div class="filter-input-wrap">
+            <span class="filter-input-label">Moc min</span>
+            <input class="filter-input" type="number" id="f-power-min" placeholder="KM" min="0" aria-label="Minimalna moc silnika">
+          </div>
+          <div class="filter-input-wrap">
+            <span class="filter-input-label">Pojemność min</span>
+            <input class="filter-input" type="number" id="f-cap-min" placeholder="cm³" min="0" aria-label="Minimalna pojemność silnika">
+          </div>
+          <button class="btn btn--ghost filter-reset" id="filterReset" aria-label="Resetuj filtry">
+            <i class="fa-solid fa-rotate-left" aria-hidden="true"></i> Resetuj
+          </button>
+        </div>
+        <p class="filter-count" id="filterCount" aria-live="polite"></p>
+      </div>
+
+      <div class="listings-grid" id="listingsGrid" aria-label="Lista ogłoszeń"></div>
+
+      <div class="listings-empty hidden" id="listingsEmpty" role="status">
+        <i class="fa-solid fa-car-side" aria-hidden="true"></i>
+        <p>Brak ogłoszeń pasujących do wybranych filtrów.</p>
+        <button class="btn btn--ghost" id="emptyReset">Resetuj filtry</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARD TEMPLATE -->
+  <template id="cardTemplate">
+    <article class="car-card" role="button" tabindex="0" aria-label="Szczegóły samochodu">
+      <div class="car-card__thumb-wrap">
+        <img class="car-card__thumb" loading="lazy" alt="">
+        <span class="car-card__fuel-badge"></span>
+      </div>
+      <div class="car-card__body">
+        <h3 class="car-card__title"></h3>
+        <ul class="car-card__specs" aria-label="Specyfikacja">
+          <li class="spec-item spec-year"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i><span></span></li>
+          <li class="spec-item spec-mileage"><i class="fa-solid fa-gauge-high" aria-hidden="true"></i><span></span></li>
+          <li class="spec-item spec-power"><i class="fa-solid fa-bolt" aria-hidden="true"></i><span></span></li>
+          <li class="spec-item spec-capacity"><i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i><span></span></li>
+        </ul>
+        <div class="car-card__footer">
+          <span class="car-card__price"></span>
+          <span class="car-card__cta">Szczegóły <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <!-- SKELETON TEMPLATE -->
+  <template id="skeletonTemplate">
+    <div class="skeleton-card" aria-hidden="true">
+      <div class="skeleton skeleton--img"></div>
+      <div class="skeleton-card__body">
+        <div class="skeleton skeleton--title"></div>
+        <div class="skeleton skeleton--line"></div>
+        <div class="skeleton skeleton--line skeleton--short"></div>
+        <div class="skeleton skeleton--price"></div>
+      </div>
+    </div>
+  </template>
+
+  <!-- KONTAKT -->
+  <section id="kontakt" class="section kontakt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Jesteśmy do dyspozycji</span>
+        <h2 class="section-title">KONTAKT</h2>
+      </div>
+      <div class="kontakt__grid">
+        <div class="kontakt__info">
+          <div class="contact-item">
+            <div class="contact-item__icon">
+              <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+            </div>
+            <div class="contact-item__text">
+              <strong>Adres</strong>
+              <span>ul. Ceglana 73</span>
+              <span>Wrocław</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item__icon">
+              <i class="fa-solid fa-phone" aria-hidden="true"></i>
+            </div>
+            <div class="contact-item__text">
+              <strong>Telefon</strong>
+              <a href="tel:794111213">794 11 12 13</a>
+              <a href="tel:793060704">793 060 704</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item__icon">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+            </div>
+            <div class="contact-item__text">
+              <strong>Godziny otwarcia</strong>
+              <span>Pon–Pt: 9:00–18:00</span>
+              <span>Sob: 10:00–15:00</span>
+            </div>
+          </div>
+          <div class="kontakt__map">
+            <iframe
+              src="https://maps.google.com/maps?q=ul.+Ceglana+73+Wroc%C5%82aw&output=embed"
+              loading="lazy"
+              title="Lokalizacja BP Premium Cars"
+              aria-label="Mapa dojazdu do BP Premium Cars">
+            </iframe>
+          </div>
+        </div>
+        <form class="kontakt__form" id="contactForm" novalidate>
+          <div class="form-group">
+            <label for="cf-name">Imię i nazwisko <span class="required" aria-hidden="true">*</span></label>
+            <input type="text" id="cf-name" name="name" required placeholder="Jan Kowalski" autocomplete="name">
+            <span class="form-error" id="cf-name-error" role="alert"></span>
+          </div>
+          <div class="form-group">
+            <label for="cf-phone">Telefon <span class="required" aria-hidden="true">*</span></label>
+            <input type="tel" id="cf-phone" name="phone" required placeholder="+48 600 000 000" autocomplete="tel">
+            <span class="form-error" id="cf-phone-error" role="alert"></span>
+          </div>
+          <div class="form-group">
+            <label for="cf-email">E-mail</label>
+            <input type="email" id="cf-email" name="email" placeholder="jan@example.com" autocomplete="email">
+            <span class="form-error" id="cf-email-error" role="alert"></span>
+          </div>
+          <div class="form-group">
+            <label for="cf-subject">Temat</label>
+            <select id="cf-subject" name="subject">
+              <option value="skup">Skup auta</option>
+              <option value="sprzedaz">Zapytanie o ofertę</option>
+              <option value="komis">Komis</option>
+              <option value="inne">Inne</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="cf-message">Wiadomość <span class="required" aria-hidden="true">*</span></label>
+            <textarea id="cf-message" name="message" rows="5" required placeholder="Opisz swoje pytanie lub zostaw kontakt..."></textarea>
+            <span class="form-error" id="cf-message-error" role="alert"></span>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full">
+            Wyślij wiadomość <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+          </button>
+          <p class="form-note">Odpowiadamy w ciągu 24 godzin. Pola oznaczone <span class="required">*</span> są wymagane.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <div class="footer__logo">
+          <span class="logo-bp">BP</span>
+          <span class="logo-divider"></span>
+          <span class="logo-premium">PREMIUM</span>
+        </div>
+        <p>ul. Ceglana 73, Wrocław</p>
+        <p>
+          <a href="tel:794111213">794 11 12 13</a> ·
+          <a href="tel:793060704">793 060 704</a>
+        </p>
+      </div>
+      <nav class="footer__nav" aria-label="Nawigacja w stopce">
+        <a href="#o-nas">O nas</a>
+        <a href="#uslugi">Usługi</a>
+        <a href="#ogloszenia">Ogłoszenia</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+      <p class="footer__copy">© 2025 BP Premium Cars. Wszelkie prawa zastrzeżone.</p>
+    </div>
+  </footer>
+
+  <!-- CAR MODAL -->
+  <div id="carModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalCarTitle" hidden>
+    <div class="modal__backdrop"></div>
+    <div class="modal__panel">
+      <button class="modal__close" id="modalClose" aria-label="Zamknij okno">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+      <div class="modal__gallery">
+        <div class="gallery__viewport">
+          <div class="gallery__track" id="galleryTrack"></div>
+        </div>
+        <button class="gallery__arrow gallery__arrow--prev" id="galleryPrev" aria-label="Poprzednie zdjęcie">
+          <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+        </button>
+        <button class="gallery__arrow gallery__arrow--next" id="galleryNext" aria-label="Następne zdjęcie">
+          <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+        </button>
+        <div class="gallery__counter" id="galleryCounter" aria-live="polite"></div>
+        <div class="gallery__thumbnails" id="galleryThumbs" role="list" aria-label="Miniaturki zdjęć"></div>
+      </div>
+      <div class="modal__details">
+        <h2 class="modal__title" id="modalCarTitle"></h2>
+        <p class="modal__price" id="modalPrice"></p>
+        <ul class="modal__specs-grid" id="modalSpecs" aria-label="Specyfikacja pojazdu"></ul>
+        <div class="modal__actions">
+          <a href="tel:794111213" class="btn btn--primary btn--full">
+            <i class="fa-solid fa-phone" aria-hidden="true"></i> Zadzwoń: 794 11 12 13
+          </a>
+          <a href="#kontakt" class="btn btn--ghost btn--full modal__contact-link" id="modalContactLink">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i> Wyślij zapytanie
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/main.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="js/listings.js"></script>
 </body>
 </html>
