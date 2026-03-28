@@ -148,6 +148,65 @@
     });
   }
 
+  // ── Opinie carousel drag-scroll ───────────────────────────
+  const opinieTrack = document.querySelector('.opinie__track');
+  if (opinieTrack) {
+    let isDown = false, startX, scrollLeft;
+    opinieTrack.addEventListener('mousedown', function (e) {
+      isDown = true;
+      opinieTrack.classList.add('is-dragging');
+      startX     = e.pageX - opinieTrack.offsetLeft;
+      scrollLeft = opinieTrack.scrollLeft;
+    });
+    opinieTrack.addEventListener('mouseleave', function () {
+      isDown = false;
+      opinieTrack.classList.remove('is-dragging');
+    });
+    opinieTrack.addEventListener('mouseup', function () {
+      isDown = false;
+      opinieTrack.classList.remove('is-dragging');
+    });
+    opinieTrack.addEventListener('mousemove', function (e) {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - opinieTrack.offsetLeft;
+      opinieTrack.scrollLeft = scrollLeft - (x - startX);
+    });
+
+    // Auto-scroll: advance one card every 3s, loop back to start
+    var autoScrollTimer = null;
+    var cards = opinieTrack.querySelectorAll('.review-card');
+    var currentCard = 0;
+
+    function scrollToCard(index) {
+      var card = cards[index];
+      if (!card) return;
+      opinieTrack.scrollTo({ left: card.offsetLeft - opinieTrack.offsetLeft, behavior: 'smooth' });
+    }
+
+    function nextCard() {
+      currentCard = (currentCard + 1) % cards.length;
+      scrollToCard(currentCard);
+    }
+
+    function startAutoScroll() {
+      if (autoScrollTimer) return;
+      autoScrollTimer = setInterval(nextCard, 3000);
+    }
+
+    function stopAutoScroll() {
+      clearInterval(autoScrollTimer);
+      autoScrollTimer = null;
+    }
+
+    opinieTrack.addEventListener('mouseenter', stopAutoScroll);
+    opinieTrack.addEventListener('mouseleave', startAutoScroll);
+    opinieTrack.addEventListener('touchstart', stopAutoScroll, { passive: true });
+    opinieTrack.addEventListener('touchend', startAutoScroll, { passive: true });
+
+    startAutoScroll();
+  }
+
   // ── Toast ──────────────────────────────────────────────────
   window.showToast = function (msg, type) {
     const toast = document.getElementById('toast');
