@@ -4,6 +4,7 @@
   'use strict';
 
   const API_URL      = 'https://d3apsgxvdweecv.cloudfront.net/public/active-listings.json';
+  const PAGE_SIZE    = 10;
   const grid         = document.getElementById('listingsGrid');
   const emptyState   = document.getElementById('listingsEmpty');
   const filterCount  = document.getElementById('filterCount');
@@ -21,14 +22,14 @@
   const cardTpl      = document.getElementById('cardTemplate');
   const skelTpl      = document.getElementById('skeletonTemplate');
 
-  let allListings = [];
+  let allListings   = [];
+  let visibleCount  = PAGE_SIZE;
 
-  // ── Formatters ─────────────────────────────────────────────
-  function fmt() { return window._fmt || {}; }
-  function formatPrice(p)   { return (fmt().formatPrice   || function(x){return x;})(p); }
-  function formatMileage(m) { return (fmt().formatMileage || function(x){return x + ' km';})(m); }
-  function fuelLabel(f)     { return (fmt().fuelLabel     || function(x){return x;})(f); }
-  function cap(s)           { return (fmt().capitalise    || function(x){return x;})(s); }
+  // ── Formatters (self-contained, no dependency on modal.js) ─
+  function formatPrice(p)   { return p.toLocaleString('pl-PL'); }
+  function formatMileage(m) { return m.toLocaleString('pl-PL') + ' km'; }
+  function fuelLabel(f)     { return { petrol: 'Benzyna', diesel: 'Diesel' }[f] || f; }
+  function cap(s)           { return s ? s.charAt(0).toUpperCase() + s.slice(1) : ''; }
 
   // ── Skeletons ──────────────────────────────────────────────
   function showSkeletons(n) {
@@ -50,10 +51,12 @@
     }
 
     emptyState.classList.add('hidden');
-    filterCount.textContent = 'Znaleziono ' + listings.length + ' ogłosze' +
-      (listings.length === 1 ? 'nie' : listings.length < 5 ? 'nia' : 'ń') + '.';
+    const total = listings.length;
+    const shown = Math.min(visibleCount, total);
+    filterCount.textContent = 'Pokazano ' + shown + ' z ' + total + ' ogłosze' +
+      (total === 1 ? 'nia' : 'ń') + '.';
 
-    listings.forEach(function (listing) {
+    listings.slice(0, visibleCount).forEach(function (listing) {
       const clone = cardTpl.content.cloneNode(true);
       const card  = clone.querySelector('.car-card');
 
@@ -62,6 +65,8 @@
       const img = card.querySelector('.car-card__thumb');
       img.src  = thumb;
       img.alt  = cap(listing.make) + ' ' + cap(listing.model) + ' ' + listing.year;
+      img.addEventListener('load',  function () { img.classList.add('is-loaded'); });
+      img.addEventListener('error', function () { img.classList.add('is-loaded'); });
 
       card.querySelector('.car-card__fuel-badge').textContent = fuelLabel(listing.fuelType);
       card.querySelector('.car-card__title').textContent =
@@ -84,7 +89,24 @@
 
       grid.appendChild(clone);
     });
+
+    // "Pokaż więcej" button
+    const existing = document.getElementById('loadMoreBtn');
+    if (existing) existing.remove();
+    if (visibleCount < listings.length) {
+      const btn = document.createElement('button');
+      btn.id        = 'loadMoreBtn';
+      btn.className = 'btn btn--ghost load-more-btn';
+      btn.innerHTML = 'Pokaż więcej <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>';
+      btn.addEventListener('click', function () {
+        visibleCount += PAGE_SIZE;
+        renderCards(currentFiltered);
+      });
+      grid.insertAdjacentElement('afterend', btn);
+    }
   }
+
+  let currentFiltered = [];
 
   // ── Populate filter options ────────────────────────────────
   function populateFilters(listings) {
@@ -140,7 +162,7 @@
     const powerMin    = fPowerMin.value  ? parseFloat(fPowerMin.value)    : null;
     const capMin      = fCapMin.value    ? parseFloat(fCapMin.value)      : null;
 
-    const filtered = allListings.filter(function (l) {
+    currentFiltered = allListings.filter(function (l) {
       if (makeVal   && l.make     !== makeVal)   return false;
       if (modelVal  && l.model    !== modelVal)  return false;
       if (fuelVal   && l.fuelType !== fuelVal)   return false;
@@ -153,7 +175,8 @@
       return true;
     });
 
-    renderCards(filtered);
+    visibleCount = PAGE_SIZE;
+    renderCards(currentFiltered);
   }
 
   // ── Reset filters ──────────────────────────────────────────
@@ -168,7 +191,9 @@
     fPriceMax.value = '';
     fPowerMin.value = '';
     fCapMin.value   = '';
-    renderCards(allListings);
+    currentFiltered = allListings;
+    visibleCount    = PAGE_SIZE;
+    renderCards(currentFiltered);
   }
 
   // ── Init listeners ─────────────────────────────────────────
@@ -196,7 +221,8 @@
       return res.json();
     })
     .then(function (data) {
-      allListings = Array.isArray(data) ? data : [];
+      allListings     = Array.isArray(data) ? data : [];
+      currentFiltered = allListings;
       populateFilters(allListings);
       initFilters();
       renderCards(allListings);

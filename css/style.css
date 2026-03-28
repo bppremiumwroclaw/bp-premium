@@ -657,8 +657,10 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
 .car-card__thumb {
   width: 100%; height: 100%;
   object-fit: cover;
-  transition: transform 0.4s ease;
+  transition: transform 0.4s ease, opacity 0.3s ease;
+  opacity: 0;
 }
+.car-card__thumb.is-loaded { opacity: 1; }
 .car-card:hover .car-card__thumb { transform: scale(1.04); }
 
 .car-card__fuel-badge {
