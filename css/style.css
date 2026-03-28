@@ -353,6 +353,24 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
   position: relative;
   display: inline-block;
 }
+.listings-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-accent);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  min-width: 2rem;
+  height: 2rem;
+  padding: 0 0.6rem;
+  border-radius: 20px;
+  vertical-align: middle;
+  margin-left: 0.5rem;
+  line-height: 1;
+}
+
 .section-title::after {
   content: '';
   display: block;

@@ -4,6 +4,7 @@
   'use strict';
 
   const API_URL      = 'https://d3apsgxvdweecv.cloudfront.net/public/active-listings.json';
+  const API_PROXY    = 'https://corsproxy.io/?' + encodeURIComponent(API_URL);
   const PAGE_SIZE    = 10;
   const grid         = document.getElementById('listingsGrid');
   const emptyState   = document.getElementById('listingsEmpty');
@@ -215,14 +216,20 @@
   // ── Fetch & boot ───────────────────────────────────────────
   showSkeletons(6);
 
-  fetch(API_URL)
-    .then(function (res) {
+  function loadListings(url) {
+    return fetch(url).then(function (res) {
       if (!res.ok) throw new Error('HTTP ' + res.status);
       return res.json();
-    })
+    });
+  }
+
+  loadListings(API_URL)
+    .catch(function () { return loadListings(API_PROXY); })
     .then(function (data) {
       allListings     = Array.isArray(data) ? data : [];
       currentFiltered = allListings;
+      const badge = document.getElementById('listingsBadge');
+      if (badge) badge.textContent = allListings.length;
       populateFilters(allListings);
       initFilters();
       renderCards(allListings);
