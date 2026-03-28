@@ -234,7 +234,7 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
    ============================================================ */
 .hero {
   position: relative;
-  height: 90dvh;
+  height: 95dvh;
   min-height: 560px;
   display: flex;
   align-items: center;
