@@ -1140,6 +1140,7 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
   bottom: 1.5rem;
   left: 50%;
   transform: translateX(-50%) translateY(120%);
+  visibility: hidden;
   background: var(--color-text);
   color: #fff;
   padding: 0.85rem 1.75rem;
@@ -1152,7 +1153,7 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
   max-width: 90vw;
   text-align: center;
 }
-.toast.is-visible { transform: translateX(-50%) translateY(0); }
+.toast.is-visible { transform: translateX(-50%) translateY(0); visibility: visible; }
 .toast.is-success { background: #2D7D4E; }
 .toast.is-error { background: #C0392B; }
 
@@ -1259,7 +1260,8 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
     border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-    max-height: 95dvh;
+    height: 80vh;
+    max-height: 80vh;
     max-width: 100%;
     width: 100%;
     animation: modalSlideUp 0.3s ease;

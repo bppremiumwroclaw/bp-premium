@@ -14,7 +14,7 @@
   const modalTitle     = document.getElementById('modalCarTitle');
   const modalPrice     = document.getElementById('modalPrice');
   const modalSpecs     = document.getElementById('modalSpecs');
-  const contactLink    = document.getElementById('modalContactLink');
+  const listingLink    = document.getElementById('modalListingLink');
 
   let currentIndex   = 0;
   let totalSlides    = 0;
@@ -30,6 +30,13 @@
 
     buildSpecs(listing);
     buildGallery(listing.photos || []);
+
+    if (listing.url) {
+      listingLink.href = listing.url;
+      listingLink.hidden = false;
+    } else {
+      listingLink.hidden = true;
+    }
 
     // Lock scroll without position:fixed jump
     document.body.dataset.scrollY = window.scrollY;
@@ -137,10 +144,6 @@
   // ── Close triggers ─────────────────────────────────────────
   closeBtn.addEventListener('click', window.closeModal);
   backdrop.addEventListener('click', window.closeModal);
-
-  contactLink.addEventListener('click', function () {
-    window.closeModal();
-  });
 
   // ── Keyboard ───────────────────────────────────────────────
   document.addEventListener('keydown', function (e) {
