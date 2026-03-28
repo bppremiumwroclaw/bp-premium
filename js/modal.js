@@ -31,12 +31,10 @@
     buildSpecs(listing);
     buildGallery(listing.photos || []);
 
-    // iOS scroll lock
-    const scrollY = window.scrollY;
-    document.body.style.position   = 'fixed';
-    document.body.style.top        = '-' + scrollY + 'px';
-    document.body.style.width      = '100%';
-    document.body.dataset.scrollY  = scrollY;
+    // Lock scroll without position:fixed jump
+    document.body.dataset.scrollY = window.scrollY;
+    document.documentElement.style.overflow = 'hidden';
+    document.documentElement.style.height   = '100%';
 
     modal.hidden = false;
     closeBtn.focus();
@@ -46,12 +44,9 @@
   window.closeModal = function () {
     modal.hidden = true;
 
-    // Restore scroll position (iOS fix)
-    const scrollY = parseInt(document.body.dataset.scrollY || '0', 10);
-    document.body.style.position = '';
-    document.body.style.top      = '';
-    document.body.style.width    = '';
-    window.scrollTo(0, scrollY);
+    // Restore scroll lock
+    document.documentElement.style.overflow = '';
+    document.documentElement.style.height   = '';
 
     if (lastFocused) lastFocused.focus();
   };
